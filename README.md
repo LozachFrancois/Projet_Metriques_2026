@@ -27,16 +27,11 @@ Vous allez dans cette séquence installer un serveur Flask dans votre Codespace.
 
 **Création du serveur Flask**  
 ```
-curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+make install
 ```
+**Lancement de l'application**  
 ```
-k3d cluster create pra \
-  --servers 1 \
-  --agents 2
-```
-**vérification de la création de votre cluster Kubernetes**  
-```
-kubectl get nodes
+make run
 ```
 **Installation du logiciel Packer (création d'images Docker)**  
 ```
