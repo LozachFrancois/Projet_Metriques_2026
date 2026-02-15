@@ -1,4 +1,69 @@
 ------------------------------------------------------------------------------------------------------
+ATELIER METRIQUES
+------------------------------------------------------------------------------------------------------
+L’idée en 30 secondes : Cet atelier a pour objectif de vous apprendre à **créer des graphiques** (dans le cadre de création de métriques par exemple) grace à une application **Python** et via la **construction d'API**. Vous allez utiliser et mettre en oeuvre au travers de cet atelier, un serveur Python utilisant le **Framework Flask**. Vous allez créer des API pour au mettre en service des bibliothèques graphiques. Large programme mais tout à fait accessible et ne nécessitant pas de base technique particulière. Juste de l'observation et de la rigueur dans votre travail.
+  
+**Architecture cible :** Ci-dessous, voici l'architecture cible souhaitée.   
+  
+![Screenshot Actions](Architecture_cible.png)  
+  
+-------------------------------------------------------------------------------------------------------
+Séquence 1 : Codespace de Github
+-------------------------------------------------------------------------------------------------------
+Objectif : Création d'un Codespace Github  
+Difficulté : Très facile (~5 minutes)
+-------------------------------------------------------------------------------------------------------
+**Faites un Fork de ce projet**. Si besoin, voici une vidéo d'accompagnement pour vous aider à "Forker" un Repository Github : [Forker ce projet](https://youtu.be/p33-7XQ29zQ) 
+  
+Ensuite depuis l'onglet **[CODE]** de votre nouveau Repository, **ouvrez un Codespace Github**.
+  
+---------------------------------------------------
+Séquence 2 : Création du votre environnement de travail
+---------------------------------------------------
+Objectif : Créer votre environnement de travail  
+Difficulté : Simple (~10 minutes)
+---------------------------------------------------
+Vous allez dans cette séquence mettre en place un cluster Kubernetes K3d contenant un master et 2 workers, installer les logiciels Packer et Ansible. Depuis le terminal de votre Codespace copier/coller les codes ci-dessous étape par étape :  
+
+**Création du cluster K3d**  
+```
+curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+```
+```
+k3d cluster create pra \
+  --servers 1 \
+  --agents 2
+```
+**vérification de la création de votre cluster Kubernetes**  
+```
+kubectl get nodes
+```
+**Installation du logiciel Packer (création d'images Docker)**  
+```
+PACKER_VERSION=1.11.2
+curl -fsSL -o /tmp/packer.zip \
+  "https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip"
+sudo unzip -o /tmp/packer.zip -d /usr/local/bin
+rm -f /tmp/packer.zip
+```
+**Installation du logiciel Ansible**  
+```
+python3 -m pip install --user ansible kubernetes PyYAML jinja2
+export PATH="$HOME/.local/bin:$PATH"
+ansible-galaxy collection install kubernetes.core
+```
+  
+---------------------------------------------------
+Séquence 3 : Déploiement de l'infrastructure
+---------------------------------------------------
+Objectif : Déployer l'infrastructure sur le cluster Kubernetes
+Difficulté : Facile (~15 minutes)
+---------------------------------------------------  
+
+
+
+
+------------------------------------------------------------------------------------------------------
 PROJET METRIQUES
 ------------------------------------------------------------------------------------------------------
 Quelles sont les notions qui vont être abordées au cours de cet atelier ?
