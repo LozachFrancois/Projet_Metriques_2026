@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Atelier Métriques | François Lozach</title>
+  <style>
+    :root {
+      --primary: #4a6fa5;
+      --primary-dark: #166088;
+      --secondary: #4fc3f7;
+      --accent: #ff6b6b;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --text: #333;
+      --text-light: #fff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --radius: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: #f5f7fa;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--text-light);
+      padding: 3rem 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 300;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem auto;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+      background: linear-gradient(to bottom right, var(--primary), var(--primary-dark));
+      color: var(--text-light);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      padding-bottom: 0.5rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+    }
+
+    .info-item i {
+      font-size: 1.2rem;
+      margin-right: 1rem;
+      color: var(--secondary);
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    button {
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: var(--text-light);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: var(--text-light);
+      background-color: var(--dark);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-wrapper {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Contactez-moi</h1>
+      <h2>Pour toute question, collaboration ou demande d'information</h2>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h3>Atelier Métriques</h3>
+        <div class="info-item">
+          <i class="fas fa-user"></i>
+          <p>François Lozach</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>123 Rue de Paris, 75000 Paris</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone-alt"></i>
+          <p>+33 1 23 45 67 89</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <p>francois.lozach@atelier-metriques.fr</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-clock"></i>
+          <p>Lun-Ven : 9h-18h</p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+          </div>
+          <button type="submit">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Atelier Métriques — François Lozach. Tous droits réservés.</p>
+    </div>
+  </footer>
+</body>
+</html>

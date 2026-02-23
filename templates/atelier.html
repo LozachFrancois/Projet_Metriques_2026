@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Métriques — Humidité Relative à Brest</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #4a6fa5;
+      --secondary: #166088;
+      --accent: #4fc3f7;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --text: #333;
+      --text-light: #fff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --radius: 8px;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--light);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text-light);
+      padding: 2rem 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .chart-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .info {
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--dark);
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 0 1rem;
+    }
+
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: var(--text-light);
+      background-color: var(--dark);
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Atelier Métriques — Humidité Relative</h1>
+      <p>Brest (48.3903°N, -4.4863°E) — Dernières 24h</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <h2>Niveau d'Humidité Relative (%)</h2>
+      <div class="chart-container">
+        <canvas id="radarChart"></canvas>
+      </div>
+      <div class="info">
+        <p>Données horaires simulées inspirées d'Open-Meteo</p>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-color" style="background-color: rgba(75, 192, 192, 0.6);"></div>
+          <span>Humidité (%)</span>
+        </div>
+      </div>
+      <p style="font-size: 0.9rem; text-align: center; margin-top: 1rem;">
+        Mise à jour : 23 février 2026
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Atelier Métriques — François Lozach</p>
+    </div>
+  </footer>
+
+  <script>
+    // Données simulées pour les dernières 24h (en %)
+    const humidityData = {
+      labels: ['00h', '03h', '06h', '09h', '12h', '15h', '18h', '21h'],
+      datasets: [{
+        label: 'Humidité Relative (%)',
+        data: [85, 88, 90, 82, 75, 70, 78, 84],
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 2,
+        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+      }]
+    };
+
+    // Création du graphique en radar
+    const ctx = document.getElementById('radarChart').getContext('2d');
+    const radarChart = new Chart(ctx, {
+      type: 'radar',
+      data: humidityData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+          r: {
+            angleLines: {
+              display: true
+            },
+            suggestedMin: 60,
+            suggestedMax: 100,
+            ticks: {
+              stepSize: 10
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return `${context.dataset.label}: ${context.raw}%`;
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
